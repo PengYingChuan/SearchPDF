@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>PDF Search Tool</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>SEARCH IN PDF FILE</h1>
+            </div>
+		<h2>PDF Search Tool</h2>
+
+                <form method="post" action="{{ url_for('hello') }}">
+                  <label for="yourname">Please enter your name:</label>
+                  <input type="text" name="yourname" required/><br />
+                  <label for="youremail">Please enter your email:</label>
+                  <input type="text" name="youremail" required/><br />
+                  <input type="submit" />
+			<p>
+			Please specify a file:<br>
+			<input type="file" name="datafile" size="40" />
+			</p>
+			
+                </form>
+				<div class="picture-container">
+           		 	<img src="logo.png" alt="logo_pdf" style="width:304px;height:228px">
+           
+           </div>
+            </div>
+           
+            </div>
+        </div>
+    </body>
+</html>

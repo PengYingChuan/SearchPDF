@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Search PDF</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/agency.css') }}" rel="stylesheet">
+	
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome-4.1.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="yonlyhtrj1dserq"></script>
+<script>
+
+var button = Dropbox.createChooseButton(options);
+document.getElementById("container").appendChild(button);
+</script>
+
+
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").fadeOut("slow");
+});
+
+</script>	
+
+<style>
+  .loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('./static/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+  .loaders {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('./static/search1.gif') 50% 40% no-repeat rgb(249,249,249);
+}
+
+</style>
+
+</head>
+
+<body id="page-top" class="index">
+<div class="loader"></div>
+<div class="loaders" style="display: none;">
+	      
+	 <div style="margin-top:27%; margin-left: 35%;"> <img src="./static/loader5.gif" alt="Loading1" height="100px" width="400px"> </div>
+	 </div>
+
+</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll"  href="#page-top">Search PDF</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#pdfExtract">Search</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#help">Help</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team">Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Your Queries!</div>
+                <div class="intro-heading">Just A Button Click Away</div>
+                <a href="#services" class="page-scroll btn btn-xl">START NOW</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Services</h2>
+                    <h3 class="section-subheading text-muted">We Offer!</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <img src="./static/img/logos/dropBox.png" class="img-responsive img-circle" alt="">
+                    
+                    </span>
+                    <h4 class="service-heading"><a class="page-scroll" href="#pdfExtract">Search in Dropbox</a></h4>
+                    <p class="text-muted">Just link your Dropbox and get started to search content.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        
+                        <img src="./static/img/logos/googleDrive.png" class="img-responsive img-circle" alt="">
+                    </span>
+                    <h4 class="service-heading"><a class="page-scroll">Search in Google Drive</a></h4>
+                    <p class="text-muted" style="font-weight:bold">OUR NEXT MILESTONE !</br></p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                       <img src="./static/img/logos/help.png" class="img-responsive img-circle" alt="">
+                    </span>
+                    <h4 class="service-heading"><a class="page-scroll" href="#help">Need Help</a></h4>
+                    <p class="text-muted">Just click if you don't know how it works.</br> We are always here to help you out. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="pdfExtract" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Search in Dropbox</h2>
+                    
+			
+			<div class="portfolio-hover" style="font-weight:bold">
+	
+			<div class="portfolio-hover-content" style="width:50%; display:inline-block; float:left; margin-left:15%">                               
+				<span class="fa-stack fa-4x">
+			<a href="{{ url_for('startDrop') }}">
+                        <img src="./static/img/logos/dropbox-link.png" class="img-responsive" alt="Click to Link Dropbox"> 
+			</a> 
+                    </span>
+                            </div>
+                            <div class="portfolio-hover-content" style="display:inline-block; float: left; margin-left:-10%">                               
+				<span class="fa-stack fa-4x">
+			<a href="{{ url_for('dropbox_unlink') }}">
+                        <img src="./static/img/logos/dropbox-unlink.gif" class="img-responsive" alt="Click to Link Dropbox"> 
+			</a> 
+                    </span>
+                            </div>
+                        </div>
+                        	
+			
+                </div>
+	
+
+		<div class="portfolio-hover" style="font-weight:bold">
+	
+			<div class="portfolio-hover-content" style="width:50%; display:inline-block; float:left; margin-left:38.5%">  <h4>Link</h4> </div>
+<div class="portfolio-hover-content" style="display:inline-block; float: left; margin-left:-32%"">  <h4>Unlink</h4> </div>
+	
+</div>
+
+	
+            </div>
+          </div>      
+		<div class="row">
+                <div class="col-lg-12 text-center">
+                         <form method="post" action="{{ url_for('hello') }}" id="gds_form">
+                 		
+							 
+				<select id="mySelect" onchange="myPath()">
+				<option value="" disabled selected style="display:none;">Select folder want to search</option>
+   				{% for pathsIn in folder.subfolders%}
+				<option>{{pathsIn.path}}</option>
+				{% endfor %}
+                   		</select>
+				
+				<br><br>
+							
+				<input type="text" name="yourPath" id="inputSearchPath" placeholder="Enter complete path of folder Ex.: /home/files/folder/" 						style="width: 400px;height:40px;" required/>
+				<br><br>
+				<input type="text" name="yourContent" placeholder="Enter Search content"
+						       rows="100" 
+						       style="width:400px; height:40px;" 
+						       value="" required/>			
+				
+			        <br><br>
+				 <b>Check path in</b>
+			         <h4 id="container"></h4>
+				
+				</br>
+				<input type="submit" class="page-scroll btn btn-xl" value="START SEARCH"/>
+                                </form>
+		</div>                    
+		
+                    
+                </div>
+  		
+        
+</section>
+	<!-- Search From Drive 
+<section id="portfolio1" class="bg-light-gray">
+	 <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Search in Google Drive</h2>
+                    
+			
+			<div class="portfolio-hover">
+					
+                            <div class="portfolio-hover-content">                               
+				<span class="fa-stack fa-4x">
+			<a href="{{ url_for('startDrop') }}">
+                        <img src="./static/img/logos/googleDrive.png" class="img-responsive" alt="Click to Link Dropbox"> 
+			</a> 
+                    </span>
+                            </div>
+                        </div>
+                        		
+			
+                </div>
+            </div>
+          </div>      
+		<div class="row">
+                <div class="col-lg-12 text-center">
+                         <form method="post" action="{{ url_for('hello') }}" id="gds_form">
+                 		<br><br>
+                  		 <input type="text" name="yourPath" placeholder="Enter complete path of folder Ex.: /home/files/folder/" 						style="width: 400px;height:40px;" required/>
+				<br><br>
+				<input type="text" name="yourContent" placeholder="Enter Search content"
+						       rows="100" 
+						       style="width:400px; height:40px;" 
+						       value="" required/>			
+				
+			        <br><br>
+				 
+				
+				</br>
+				<input type="submit" class="page-scroll btn btn-xl" value="START SEARCH"/>
+                                </form>
+		</div>                    
+		
+                    
+                </div>
+    </section>-->
+
+    <!-- About Section -->
+    <section id="help">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">HELP</h2>
+                    <h3 class="section-subheading text-muted">Simple way to get started<br><br>With this application you can search content in pdf files without opening it. Just link and provide folder path to search in.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="./static/img/logos/dropBox.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Link your Dropbox</h4>
+                                    <h4 class="subheading"></h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Click on blue link button<br>Allow application to link your Dropbox</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                               <img class="img-circle img-responsive" src="./static/img/logos/path.png" alt="">
+                                    </h4>
+                       		 
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Enter Path</h4>
+                                    <h4 class="subheading"></h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Enter the folder path of Dropbox, where you want to search<br></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="./static/img/logos/search.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Search String</h4>
+                                    <h4 class="subheading"></h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Enter the context that you want to search<br>Click on Search button</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+				<br>
+                                <img class="img-circle img-responsive" src="./static/img/logos/dropbox-chooser.png" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Additional Feature</h4>
+                                    <h4 class="subheading"></h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">1. Click on Dropbox chooser to find the path<br>2. If you want to unlink from Dropbox just click on red unlink button</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Here
+                                    <br>You
+                                    <br>Go!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-muted">Worked on this Idea, and made it.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="./static/img/team/1.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Vaibhav Namdev</h4>
+                        <p class="text-muted"></p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/E_vaibhav"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/E.VAIBHAV?fref=ts"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/pub/vaibhav-namdev/34/344/495/"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="./static/img/team/2.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Milind Mahajan</h4>
+                        <p class="text-muted"></p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/milind13888"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/milind.13888"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/pub/milind-mahajan/18/376/b6b/"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="./static/img/team/3.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Vinay Gulani</h4>
+                        <p class="text-muted"></p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/vinaygulani"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/vinay.gulani.5"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/pub/vinay-gulani/54/a13/42/"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+	   
+	 <div class="col-sm-4">
+                    <div class="team-member">
+                        
+                        <h4></h4>
+                        <p class="text-muted"></p>
+                        <ul class="list-inline social-buttons">
+                           
+                        </ul>
+                    </div>
+                </div>
+
+	    <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="./static/img/team/4.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Mangesh Yadav</h4>
+                        <p class="text-muted"></p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/mangeshyadav88"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/online.mangesh"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/pub/mangesh-yadav/aa/34/42a/"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+		
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Aside 
+    <aside class="clients">
+    <!--    <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside> -->
+
+<!-- Connected to Cloudant for user feedback -->
+<script>
+function myPath() {
+    var setPath = document.getElementById("mySelect").value;
+    document.getElementById("inputSearchPath").value = setPath+"/";
+}
+</script>
+
+
+ <script type="text/javascript" src="{{ url_for('static', filename='js/config') }}"></script>
+ <script type="text/javascript" >
+
+
+	function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
+
+function tryMe() {
+
+var baseUrl = "https://" + user +".cloudant.com/" + db;
+   function errorHandler(jqXHR, textStatus, errorThrown) {
+	      $( "#output-data" ).text(JSON.stringify(jqXHR, null, 2));
+	   }
+   // on create
+      var email = $( "#email" ).val();
+	if (validateEmail(email)) {
+	    
+	var name = $( "#name" ).val();
+      var phone = $( "#phone" ).val();
+      var message = $( "#message" ).val();
+      
+      if (name == "")
+         name = "anonymous";
+      var time = new Date();
+      if(email && message) {
+         $.ajax({
+            url: baseUrl,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ 
+	       type: "feedback",
+               name: name,
+               email: email,
+               phone: phone,
+               message: message	,
+               timestamp: time
+            }),
+            error: errorHandler
+         }).done(function( data ) {
+            var doc = JSON.parse(data);
+            alert("Thanks for your Feedback!");
+         });
+
+	}
+	else{ alert("Email or Message Field is Empty!");
+		}
+}
+else{ alert("Invalid Email Address!");}
+}
+
+</script>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Feedback</h2>
+                    <h3 class="section-subheading text-muted">Your Feedback is most valuable for Us and help us to provide you Better Services.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name" id="name" required data-validation-required-message="Please enter your name." required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address." required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Your Phone" id="phone" required data-validation-required-message="Please enter your phone number." required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message." required></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="button" id="submit" class="btn btn-xl" onclick="tryMe()">Send Feedback</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Created by: CMPE272 Group #28</span>
+                </div>
+		        <div class="col-md-4">
+		            <ul class="list-inline social-buttons">
+		               
+		                </li>
+		                
+		            </ul>
+		        </div>
+                <div class="col-md-4">
+                 <!--   <ul class="list-inline quicklinks">
+                        <li>Disclaimer: 1. We do not save any of your files
+                        <br>
+                        2. The Dropbox icons used are trademark of Dropbox Inc.<br>
+			3. The Google Drive icons used are trademark of Google Inc.
+                        </li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    
+
+
+<script>
+options = {
+
+    // Required. Called when a user selects an item in the Chooser.
+    success: function(files) {
+        alert("Here's the file link: " + files[0].link)
+    },
+
+    // Optional. Called when the user closes the dialog without selecting a file
+    // and does not include any parameters.
+    cancel: function() {
+
+    },
+
+    // Optional. "preview" (default) is a preview link to the document for sharing,
+    // "direct" is an expiring link to download the contents of the file. For more
+    // information about link types, see Link types below.
+    linkType: "preview", // or "direct"
+
+    // Optional. A value of false (default) limits selection to a single file, while
+    // true enables multiple file selection.
+    multiselect: false, // or true
+
+    // Optional. This is a list of file extensions. If specified, the user will
+    // only be able to select files with these extensions. You may also specify
+    // file types, such as "video" or "images" in the list. For more information,
+    // see File types below. By default, all extensions are allowed.
+    extensions: ['.pdf', '.doc', '.docx'],
+};
+var button = Dropbox.createChooseButton(options);
+document.getElementById("container").appendChild(button);
+</script>
+
+
+<script>
+$('#gds_form').submit(function() {
+	    var pass = true;
+	    //some validations
+
+	    if(pass == false){
+		return false;
+	    }
+	    $(".loaders").show();
+
+	    return true;
+	});
+</script>
+	
+	
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="{{ url_for('static', filename='js/classie.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cbpAnimatedHeader.js') }}"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{{ url_for('static', filename='js/jqBootstrapValidation.js') }}"></script>
+   
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ url_for('static', filename='js/agency.js') }}"></script>
+
+
+<script>
+window.addEventListener('WebComponentsReady', function(e){
+var chooser = document.querySelector('dropbox-button[buttonType=chooser]'),
+saver = document.querySelector('dropbox-button[buttonType=saver]');
+// chooser
+chooser.success = function(){
+console.log('success');
+};
+chooser.cancel = function(){
+console.log('cancel');
+};
+// saver
+saver.success = function(){
+console.log('success');
+};
+saver.progress = function(){
+console.log('progress');
+};
+saver.cancel = function(){
+console.log('cancel');
+};
+saver.error = function(){
+console.log('error');
+};
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+---
+applications:
+- memory: 512MB
+  buildpack: https://github.com/ephoning/heroku-buildpack-python
+  host: searchPDF
+  command: python app.py
+  name: searchPDF
+  instances: 1

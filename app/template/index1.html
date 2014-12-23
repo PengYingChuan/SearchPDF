@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if real_name %}
+    <p>Welcome {{ real_name }}!
+    Click to Quick: <a href="{{ url_for('dropbox_logout') }} " method="post">Log out</a>
+  {% else %}
+     <a href="{{ url_for('dropbox_auth_start') }}">Click to Quick: Link</a>
+  {% endif %} 
+
+
+
+<form action="{{ url_for('login') }}" method="post" class="afterSignIn">
+    <!-- This panel is for login -->
+    
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+        <div class="panel-heading">READY TO LINK
+
+</div>
+        <div class="panel-body">
+           <form class="form-horizontal" role="form">
+		               <div class="form-group  usernameDiv">
+		                  
+		                  <div class="col-sm-10">
+		                      <label class="inputUsername" class="col-sm-2 control-label pull-left" style="color:red">Caution: This is an external link from searchPDF website. Will link our services to your dropbox. We does not save any data or files from your dropbox.</label>
+		                  </div>
+		               </div>
+	                 
+	                  <div class="form-group ">
+	                    <div class="pull-left signIn" style="margin-left: 37% ;
+  margin-right: auto ;">
+				
+	                     <a href="{{ url_for('dropbox_auth_start') }}"><button type="button" class="btn btn-primary">Click To Link</button></a>
+	                   </div> </div>
+	                  </div>
+              </form>
+        </div>
+	</div>
+ </form>
+
+ 
+{% endblock %}
